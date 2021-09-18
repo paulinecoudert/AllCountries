@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment, useEffect, useState } from 'react';
+import axios from 'axios';
 
-function App() {
+
+
+
+
+
+
+function App(){
+ 
+    const [data, setData] = useState([]);
+
+  
+
+
+
+  useEffect(() => {
+      const fetchData = async () => {
+          const result = await axios(
+              'https://restcountries.eu/rest/v2/all',
+        );
+        setData(result.data);
+    };
+    fetchData();
+  
+  }, [])
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+      <Fragment>
+<h2>All Countries</h2>
+        <ul>
+            {data.map(item =>(
+                <li key={item.id}>
+                    
+                    <p>Country: {item.name} Capital: {item.capital} Code: {item.alpha2Code}</p>
+                    <p></p>
+                </li>
+    ))}
+        </ul>
+        </Fragment>
+
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,18 @@
+.modal-overlay {
+  position: fixed;
+  width: 50vw;
+  height: 50vh;
+  top: 20vh;
+  left: 50vh;
+  background-color: rgba(247, 238, 238, 0.5);
+  color: black;
+}
+
+/* .modal-overlay .modal {
+  transform: translate(-50%, -50%);
+  border: 1px white dashed;
+} */
+
+.modal {
+  padding: 10px;
+}
