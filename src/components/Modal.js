@@ -1,48 +1,30 @@
 /* eslint-disable no-unreachable */
 // eslint-disable-next-line react/jsx-no-undef
 import './Modal.css';
-import PropTypes from 'prop-types';
+import React from 'react';
 
 
 
-function Modal({
-  children, title, visible, close, hideModal,
-}) {
-  const clazz = `modal-overlay ${visible ? 'block' : 'hidden'}`;
 
-  return (
+const Modal = ({revele, cache}) => revele ? (
+ <React.Fragment>
 
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <div className={clazz}>
-      <div className="modal fixed top-1/2 left-1/2 bg-pink-200">
-        <div className="flex justify-between">
-          <h2 className="text-xl bold underline">{title}</h2>
+   <div className="overlay" />
+   <div className="wrapper">
+     <div className="modal">
+       <button type="button" className="close" onClick={cache}>
+         <span>&times;</span>
+       </button>
+       <p>Et voici la modale</p>
+      
 
-          {close ? <button onClick={hideModal}>X</button> : null}
-        </div>
-        {children}
-      </div>
-    </div>
 
-  );
 
-  Modal.propTypes = {
-    // eslint-disable-next-line react/require-default-props
-    children: PropTypes.node,
-    // eslint-disable-next-line react/require-default-props
-    title: PropTypes.string,
-    // eslint-disable-next-line react/require-default-props
-    visible: PropTypes.bool,
-    // eslint-disable-next-line react/require-default-props
-    close: PropTypes.bool,
-    // eslint-disable-next-line react/require-default-props
-    hideModal: PropTypes.bool,
-    // eslint-disable-next-line react/no-unused-prop-types
 
-  };
+       {}
+   </div>
+   </div>
+ </React.Fragment>
+) : null;
 
-  Modal.dafaultProps = {
-    title: '',
-  };
-}
-export default Modal;
+ export default Modal;

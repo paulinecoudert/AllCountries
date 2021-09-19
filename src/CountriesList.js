@@ -4,6 +4,8 @@ import {
   import AllCountries from './components/AllCountries';
   import EuCountries from './components/EuCountries';
   import SearchName from './components/SearchName';
+  import './styles/index.css'
+  
 
 // import { plantList } from './datas/plantList'
 
@@ -11,13 +13,14 @@ import {
 
 const CountriesList = () => (
 
-	<Router>
-	  <header className="bg-blue-800 text-white">
-		{/* <Link to="/" className="red">accueil</Link> | */}
-		<Link to="/" className="red">accueil</Link> |
-		<Link to="/allcountries">allcountries</Link> |
-		<Link to="/eucountries">eucountries</Link> |
-		<Link to="/searchname">searchname</Link>
+	<Router>	
+	  <header className="menu">
+		
+		<div className="contain">
+		<Link to="/allcountries"className="section">Allcountries</Link> 
+		<Link to="/eucountries"className="section">Eucountries</Link> 
+		<Link to="/searchname"className="section">Searchname</Link>
+		</div>
 	  </header>
 	  <Switch>
 		<Route path="/allcountries">

@@ -2,11 +2,23 @@ import '../styles/cart.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Modal from './Modal';
+import ReactPaginate from "react-paginate";
+import LogiqueModale from './LogiqueModale';
 
 function AllCountries() {
     const [data, setData] = useState([]);
-    const [modalVisible, setModalVisible] = useState(false);// creation de ma variable modalvisible et son etat set de base caché
-    const closeModalHandler = () =>setModalVisible(false);
+    const [pageNumber, setPageNumber] = useState(0);
+
+ 
+  const {revele,toogle} = LogiqueModale();
+
+    const usersPerPage = 20
+    const pagesVisited = pageNumber * usersPerPage
+
+    const pageCount = Math.ceil(data.length /usersPerPage);
+    const changePage = ({selected}) =>{
+      setPageNumber(selected)
+    };
 
   useEffect(() => {
       const fetchData = async () => {
@@ -23,29 +35,33 @@ function AllCountries() {
   return (
 
     <div  className='lmj-cart'>
-   
-<h2>All Countries</h2>
+    <h2>All Countries</h2>
         <ul>
-        
-            {data.map(item =>(
-                <li key={item.id}>
-                    { modalVisible ? <div onClick={closeModalHandler} className="back-drop"></div> : null }
-                    <button className="bg-pink-200 text-black" onClick={AllCountries}>{item.name}</button>
-                    
-        <Modal close title="le signe est:" visible={modalVisible} hideModal={() => setModalVisible(false)}>
-          <h3 >{item.alpha2Code}</h3>
-         
-
-        </Modal>
-  
-                    <p>{item.id}</p>
-                    Country: {item.name}{item.aplha2Code} 
+            {data
+            .slice(pagesVisited, pagesVisited + usersPerPage)
+            .map(item =>(
+                <li key={item.name}>
+                   <button className="button" onClick={toogle}>{item.name} Open</button>
+                   <p>Country: {item.name} Capital: {item.capital} Code: {item.alpha2Code} </p>
+                   <Modal revele = {revele}
+              cache = {toogle} 
+              >
+            </Modal >
                 </li>
     ))}
-        
         </ul>
-       
-    
+        <ReactPaginate
+        previousLabel = {"Previous"}
+        nextLabel = {"next"}
+        pageCount = {pageCount}
+        onPageChange={changePage}
+        containerClassName={"paginationBttns"}
+        previousLinkClassName={"previousBttn"}
+        nextLinkClassName={"previousBttn"}
+        disabledClassName={"disabledBttn"}
+        activeClassName={"paginationActive"}
+        />
+
         </div>
 
   )

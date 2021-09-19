@@ -13,20 +13,16 @@ function EuCountries() {
         setData(result.data) ;
     };
     fetchData();
-  
   }, [])
 
-  
 
   return (
 
     <div  className='lmj-cart'>
-        
 <h2>Eu Countries</h2>
         <ul>
             {data.map(item =>(
-                <li key={item.id}>
-                    
+                <li key={item.name}>
                     <p>Country: {item.name} Capital: {item.capital} Code: {item.alpha2Code} </p>
                     <p>Region: {item.region}</p>
                 </li>
