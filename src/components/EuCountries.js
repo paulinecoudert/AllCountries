@@ -1,4 +1,3 @@
-import '../styles/cart.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -19,14 +18,17 @@ function EuCountries() {
   return (
 
     <div  className='lmj-cart'>
-<h2>Eu Countries</h2>
+        <h3>List of Region Eu Countries</h3>
         <ul>
             {data.map(item =>(
-                <li key={item.name}>
-                    <p>Country: {item.name} Capital: {item.capital} Code: {item.alpha2Code} </p>
-                    <p>Region: {item.region}</p>
+                <li key={item.name} className="list">
+                    <div className="ligncontain">
+                    <p>Country: {item.name} <br/>Capital: {item.capital}<br/> Code: {item.alpha2Code} </p>
+                    </div>
+                    <div className="ligncontain"><p>Region: {item.region}</p>
+                    </div>
                 </li>
-    ))}
+            ))}
         </ul>
         </div>
 

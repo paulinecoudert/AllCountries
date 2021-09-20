@@ -1,21 +1,22 @@
-import '../styles/cart.css'
+import '../styles/pagination.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Modal from './Modal';
 import ReactPaginate from "react-paginate";
-import LogiqueModale from './LogiqueModale';
+import FunctionModale from './FunctionModale';
 
 function AllCountries() {
     const [data, setData] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
 
  
-  const {revele,toogle} = LogiqueModale();
+    const {show,toogle} = FunctionModale();
 
     const usersPerPage = 20
     const pagesVisited = pageNumber * usersPerPage
 
     const pageCount = Math.ceil(data.length /usersPerPage);
+
     const changePage = ({selected}) =>{
       setPageNumber(selected)
     };
@@ -35,22 +36,8 @@ function AllCountries() {
   return (
 
     <div  className='lmj-cart'>
-    <h2>All Countries</h2>
-        <ul>
-            {data
-            .slice(pagesVisited, pagesVisited + usersPerPage)
-            .map(item =>(
-                <li key={item.name}>
-                   <button className="button" onClick={toogle}>{item.name} Open</button>
-                   <p>Country: {item.name} Capital: {item.capital} Code: {item.alpha2Code} </p>
-                   <Modal revele = {revele}
-              cache = {toogle} 
-              >
-            </Modal >
-                </li>
-    ))}
-        </ul>
-        <ReactPaginate
+    
+    <ReactPaginate
         previousLabel = {"Previous"}
         nextLabel = {"next"}
         pageCount = {pageCount}
@@ -61,6 +48,28 @@ function AllCountries() {
         disabledClassName={"disabledBttn"}
         activeClassName={"paginationActive"}
         />
+        <h3>list of all Countries</h3>
+        <ul>
+            {data
+            .slice(pagesVisited, pagesVisited + usersPerPage)
+            .map(item =>(
+                <li key={item.name} className="list">
+                  <div className="ligncontain">
+                   <p>Country: {item.name}
+                   <br/>Capital: {item.capital}
+                   <br/>Code: {item.alpha2Code}
+                   </p>
+                   </div>
+                   <div className="ligncontain">
+                   <button className="button" onClick={toogle}> More infos</button>
+                   </div>
+                   <Modal show = {show}
+                    cache = {toogle}
+                    >
+                    </Modal >
+                </li>
+            ))}
+        </ul>
 
         </div>
 

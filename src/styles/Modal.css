@@ -1,17 +1,7 @@
-/* .modal-overlay {
-  position: fixed;
-  width: 50vw;
-  height: 50vh;
-  top: 20vh;
-  left: 50vh;
-  background-color: rgba(247, 238, 238, 0.5);
-  color: black;
-} */
 
-/* .modal-overlay .modal {
-  transform: translate(-50%, -50%);
-  border: 1px white dashed;
-} */
+  
+  
+
 
 .modal {
   padding: 10px;
@@ -25,7 +15,6 @@
 
 .overlay {
   background: rgba(0,0,0,0.5);
-
   opacity: 0.1;
   position: absolute;
   top: 0;
@@ -47,9 +36,10 @@
 .wrapper p{
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 40%;
   transform: translate(-50%, -50%);
   color:blanchedalmond;
+  line-height: 2em;
 }
 
 .close{

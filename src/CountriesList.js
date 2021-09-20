@@ -4,22 +4,19 @@ import {
   import AllCountries from './components/AllCountries';
   import EuCountries from './components/EuCountries';
   import SearchName from './components/SearchName';
+  import Countries from './assets/countries.png';
   import './styles/index.css'
-  
-
-// import { plantList } from './datas/plantList'
-
 
 
 const CountriesList = () => (
 
 	<Router>	
 	  <header className="menu">
-		
-		<div className="contain">
-		<Link to="/allcountries"className="section">Allcountries</Link> 
-		<Link to="/eucountries"className="section">Eucountries</Link> 
-		<Link to="/searchname"className="section">Searchname</Link>
+			<div className="contain">
+			<img src={Countries} className="world" alt="World"/>
+		<Link to="/allcountries"className="section">All countries</Link> 
+		<Link to="/eucountries"className="section">Region Eu countries</Link> 
+		<Link to="/searchname"className="section">Search by name</Link>
 		</div>
 	  </header>
 	  <Switch>
@@ -34,9 +31,21 @@ const CountriesList = () => (
 		</Route>
 		
 	  </Switch>
-	  <footer>mon foooooooooooter</footer>
+		<main className="boxcontain">
+			<div className="principal">
+			<a href="/allcountries"><h1> -{'>'} Clic on the menu or Start the project </h1></a></div>
+		</main>
+	  <footer  className="menu">
+		  <div className="footcontain">
+		  	<div className="box">Contact: <br/>
+		  	info@allcountries.com </div>
+		  	<div className="box">
+			  <a href="/allcountries">All Countries</a> <br/>
+		  		<a href="/eucountries">Eu Countries</a> <br/>
+		  		<a href="/searchname">Search by Name</a>
+			</div>
+		  </div>
+		</footer>
 	</Router>
-  
   );
-  
   export default CountriesList;

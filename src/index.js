@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
-import './styles/Banner.css';
 import reportWebVitals from './reportWebVitals';
 // import App from './components/App';
 import CountriesList from './CountriesList';

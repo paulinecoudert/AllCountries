@@ -1,12 +1,9 @@
 /* eslint-disable no-unreachable */
 // eslint-disable-next-line react/jsx-no-undef
-import './Modal.css';
+import '../styles/Modal.css'
 import React from 'react';
 
-
-
-
-const Modal = ({revele, cache}) => revele ? (
+const Modal = ({show, cache}) => show ? (
  <React.Fragment>
 
    <div className="overlay" />
@@ -15,13 +12,12 @@ const Modal = ({revele, cache}) => revele ? (
        <button type="button" className="close" onClick={cache}>
          <span>&times;</span>
        </button>
-       <p>Et voici la modale</p>
+       <p>Country:  <br/>
+       Capital: <br/>
+       Code: <br/>
+       Region: <br/>
+       Population: </p>
       
-
-
-
-
-       {}
    </div>
    </div>
  </React.Fragment>
